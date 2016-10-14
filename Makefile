@@ -1,7 +1,7 @@
 default:
 	test
 
-test_runner.c:
+test_runner.c: test/*.ts
 	checkmk test/*.ts > test_runner.c
 
 test:	test_runner.o roman.o
