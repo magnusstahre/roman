@@ -17,3 +17,19 @@ char *res;
 res = roman_add("II", "I");
 
 ck_assert_str_eq(res, "III");
+
+#test add_i_v_gives_vi
+
+char *res;
+
+res = roman_add("I", "V");
+
+ck_assert_str_eq(res, "VI");
+
+#test add_i_x_gives_xi
+
+char *res;
+
+res = roman_add("I", "X");
+
+ck_assert_str_eq(res, "XI");

@@ -1,5 +1,4 @@
-default:
-	test
+default: test
 
 test_runner.c: test/*.ts
 	checkmk test/*.ts > test_runner.c
