@@ -56,6 +56,7 @@ void roman_simplify(char *str) {
 }
 
 char *roman_expansions[] = {
+  "CM", "DCD",
   "CD", "CCCC",
   "XC", "LXL",
   "XL", "XXXX",

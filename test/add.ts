@@ -201,3 +201,11 @@ char *res;
 res = roman_add("D", "CD");
 
 ck_assert_str_eq(res, "CM");
+
+#test add_i_cm_gives_cdi
+
+char *res;
+
+res = roman_add("I", "CM");
+
+ck_assert_str_eq(res, "CMI");
