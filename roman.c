@@ -32,6 +32,7 @@ char *roman_simplifications[] = {
   "LXL", "XC",
   "CCCCC", "D",
   "CCCC", "CD",
+  "DD", "M",
   NULL, NULL
 };
 

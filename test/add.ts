@@ -185,3 +185,11 @@ char *res;
 res = roman_add("I", "CD");
 
 ck_assert_str_eq(res, "CDI");
+
+#test add_d_d_gives_m
+
+char *res;
+
+res = roman_add("D", "D");
+
+ck_assert_str_eq(res, "M");
