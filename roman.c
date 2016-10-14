@@ -62,9 +62,9 @@ void roman_expand(char *str) {
     i = strstr(str, find);
   
     if (i != NULL) {
-      rest = i + strlen(find);
-      strcpy(i, replace);
+      rest = i + strlen(replace);
       strcpy(i + strlen(replace), rest);
+      strcpy(i, replace);
     }
   }
 }
@@ -84,7 +84,7 @@ char *roman_add(char *first, char *second) {
   
   strcpy(buf, first);
   roman_expand(buf);
-  size_t len2 = strlen(first);
+  size_t len2 = strlen(buf);
   strcpy(buf+len2, second);
   roman_expand(buf+len2);
 
