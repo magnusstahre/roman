@@ -1,0 +1,5 @@
+kata:
+  build: .
+  volumes:
+    - .:/kata
+  working_dir: /kata
