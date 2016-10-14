@@ -121,3 +121,27 @@ char *res;
 res = roman_add("XX", "XX");
 
 ck_assert_str_eq(res, "XL");
+
+#test add_xix_xxi_gives_xl
+
+char *res;
+
+res = roman_add("XIX", "XXI");
+
+ck_assert_str_eq(res, "XL");
+
+#test add_i_xl_gives_xli
+
+char *res;
+
+res = roman_add("I", "XL");
+
+ck_assert_str_eq(res, "XLI");
+
+#test add_l_l_gives_c
+
+char *res;
+
+res = roman_add("L", "L");
+
+ck_assert_str_eq(res, "C");

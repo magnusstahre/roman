@@ -28,6 +28,7 @@ char *roman_simplifications[] = {
   "VIV", "IX",
   "XXXXX", "L",
   "XXXX", "XL",
+  "LL", "C",
   NULL, NULL
 };
 
@@ -50,6 +51,7 @@ void roman_simplify(char *str) {
 }
 
 char *roman_expansions[] = {
+  "XL", "XXXX",
   "IX", "VIV",
   "IV", "IIII",
   NULL, NULL
@@ -66,9 +68,9 @@ void roman_expand(char *str) {
     i = strstr(str, find);
   
     if (i != NULL) {
-      rest = i + strlen(replace);
+      rest = i + strlen(find);
       strcpy(i + strlen(replace), rest);
-      strcpy(i, replace);
+      strncpy(i, replace, strlen(replace));
     }
   }
 }
