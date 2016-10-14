@@ -41,3 +41,11 @@ char *res;
 res = roman_add("I", NULL);
 
 ck_assert_ptr_eq(res, NULL);
+
+#test add_bad_stuff_gives_null
+
+char *res;
+
+res = roman_add("bad", "stuff");
+
+ck_assert_ptr_eq(res, NULL);
