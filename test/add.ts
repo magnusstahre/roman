@@ -193,3 +193,11 @@ char *res;
 res = roman_add("D", "D");
 
 ck_assert_str_eq(res, "M");
+
+#test add_d_cd_gives_cm
+
+char *res;
+
+res = roman_add("D", "CD");
+
+ck_assert_str_eq(res, "CM");
