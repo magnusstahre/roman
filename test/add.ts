@@ -169,3 +169,11 @@ char *res;
 res = roman_add("CC", "CCC");
 
 ck_assert_str_eq(res, "D");
+
+#test add_cc_cc_gives_cd
+
+char *res;
+
+res = roman_add("CC", "CC");
+
+ck_assert_str_eq(res, "CD");
