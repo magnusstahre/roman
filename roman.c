@@ -21,29 +21,27 @@ int roman_valid(const char *str) {
   return 1;
 }
 
+char *roman_simplifications[] = {
+  "IIIII", "V",
+  "IIII", "IV",
+  NULL, NULL
+};
+
 void roman_simplify(char *str) {
+  int x;
   char *i, *find, *replace, *rest;
-  
-  find = "IIIII";
-  replace = "V";
+ 
+  for (x = 0; roman_simplifications[x] != NULL; x += 2) {
+    find = roman_simplifications[x];
+    replace = roman_simplifications[x+1];
 
-  i = strstr(str, find);
+    i = strstr(str, find);
   
-  if (i != NULL) {
-    rest = i + strlen(find);
-    strcpy(i, replace);
-    strcpy(i + strlen(replace), rest);
-  }
-
-  find = "IIII";
-  replace = "IV";
-
-  i = strstr(str, find);
-  
-  if (i != NULL) {
-    rest = i + strlen(find);
-    strcpy(i, replace);
-    strcpy(i + strlen(replace), rest);
+    if (i != NULL) {
+      rest = i + strlen(find);
+      strcpy(i, replace);
+      strcpy(i + strlen(replace), rest);
+    }
   }
 }
 
