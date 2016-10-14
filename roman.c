@@ -24,6 +24,17 @@ int roman_valid(const char *str) {
 void roman_simplify(char *str) {
   char *i, *find, *replace, *rest;
   
+  find = "IIIII";
+  replace = "V";
+
+  i = strstr(str, find);
+  
+  if (i != NULL) {
+    rest = i + strlen(find);
+    strcpy(i, replace);
+    strcpy(i + strlen(replace), rest);
+  }
+
   find = "IIII";
   replace = "IV";
 

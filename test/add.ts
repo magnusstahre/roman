@@ -65,3 +65,11 @@ char *res;
 res = roman_add("II", "II");
 
 ck_assert_str_eq(res, "IV");
+
+#test add_ii_iii_gives_v
+
+char *res;
+
+res = roman_add("II", "III");
+
+ck_assert_str_eq(res, "V");
