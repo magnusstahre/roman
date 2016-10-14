@@ -25,6 +25,7 @@ char *roman_simplifications[] = {
   "IIIII", "V",
   "IIII", "IV",
   "VV", "X",
+  "VIV", "IX",
   NULL, NULL
 };
 

@@ -89,3 +89,11 @@ char *res;
 res = roman_add("IV", "IV");
 
 ck_assert_str_eq(res, "VIII");
+
+#test add_v_iv_gives_ix
+
+char *res;
+
+res = roman_add("IV", "V");
+
+ck_assert_str_eq(res, "IX");
