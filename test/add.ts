@@ -145,3 +145,10 @@ char *res;
 res = roman_add("L", "L");
 
 ck_assert_str_eq(res, "C");
+#test add_l_xl_gives_xc
+
+char *res;
+
+res = roman_add("L", "XL");
+
+ck_assert_str_eq(res, "XC");
