@@ -145,6 +145,7 @@ char *res;
 res = roman_add("L", "L");
 
 ck_assert_str_eq(res, "C");
+
 #test add_l_xl_gives_xc
 
 char *res;
@@ -152,3 +153,11 @@ char *res;
 res = roman_add("L", "XL");
 
 ck_assert_str_eq(res, "XC");
+
+#test add_i_xc_gives_xci
+
+char *res;
+
+res = roman_add("I", "XC");
+
+ck_assert_str_eq(res, "XCI");

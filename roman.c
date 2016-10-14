@@ -52,6 +52,7 @@ void roman_simplify(char *str) {
 }
 
 char *roman_expansions[] = {
+  "XC", "LXL",
   "XL", "XXXX",
   "IX", "VIV",
   "IV", "IIII",
