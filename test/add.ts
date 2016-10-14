@@ -33,3 +33,11 @@ char *res;
 res = roman_add("I", "X");
 
 ck_assert_str_eq(res, "XI");
+
+#test add_null_gives_null
+
+char *res;
+
+res = roman_add("I", NULL);
+
+ck_assert_ptr_eq(res, NULL);
