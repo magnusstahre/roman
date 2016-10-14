@@ -113,3 +113,11 @@ char *res;
 res = roman_add("XX", "XXX");
 
 ck_assert_str_eq(res, "L");
+
+#test add_xx_xx_gives_xl
+
+char *res;
+
+res = roman_add("XX", "XX");
+
+ck_assert_str_eq(res, "XL");
