@@ -177,3 +177,11 @@ char *res;
 res = roman_add("CC", "CC");
 
 ck_assert_str_eq(res, "CD");
+
+#test add_i_cd_gives_cdi
+
+char *res;
+
+res = roman_add("I", "CD");
+
+ck_assert_str_eq(res, "CDI");
