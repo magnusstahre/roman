@@ -73,3 +73,19 @@ char *res;
 res = roman_add("II", "III");
 
 ck_assert_str_eq(res, "V");
+
+#test add_v_v_gives_x
+
+char *res;
+
+res = roman_add("V", "V");
+
+ck_assert_str_eq(res, "X");
+
+#test add_iv_iv_gives_viii
+
+char *res;
+
+res = roman_add("IV", "IV");
+
+ck_assert_str_eq(res, "VIII");

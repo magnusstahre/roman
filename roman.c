@@ -24,6 +24,7 @@ int roman_valid(const char *str) {
 char *roman_simplifications[] = {
   "IIIII", "V",
   "IIII", "IV",
+  "VV", "X",
   NULL, NULL
 };
 
@@ -45,6 +46,29 @@ void roman_simplify(char *str) {
   }
 }
 
+char *roman_expansions[] = {
+  "IV", "IIII",
+  NULL, NULL
+};
+
+void roman_expand(char *str) {
+  int x;
+  char *i, *find, *replace, *rest;
+ 
+  for (x = 0; roman_expansions[x] != NULL; x += 2) {
+    find = roman_expansions[x];
+    replace = roman_expansions[x+1];
+
+    i = strstr(str, find);
+  
+    if (i != NULL) {
+      rest = i + strlen(find);
+      strcpy(i, replace);
+      strcpy(i + strlen(replace), rest);
+    }
+  }
+}
+
 char *roman_add(char *first, char *second) {
   if (first == NULL || second == NULL) {
     return NULL;
@@ -54,12 +78,15 @@ char *roman_add(char *first, char *second) {
     return NULL;
   }
 
-  size_t lens = strlen(first) + strlen(second) + 1;
+  size_t lens = strlen(first) + strlen(second);
   
-  char *buf = malloc(lens);
+  char *buf = malloc(lens * 3);
   
   strcpy(buf, first);
-  strcat(buf, second);
+  roman_expand(buf);
+  size_t len2 = strlen(first);
+  strcpy(buf+len2, second);
+  roman_expand(buf+len2);
 
   qsort(buf, strlen(buf), sizeof(char), roman_compare);
   
