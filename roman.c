@@ -3,7 +3,7 @@
 
 #include "roman.h"
 
-char roman_numeral[] = "XVI";
+char roman_numeral[] = "MDCLXVI";
 
 int roman_compare(const void *a, const void *b) {
   return index(roman_numeral, *(char *)a) - index(roman_numeral, *(char *)b);
@@ -19,6 +19,21 @@ int roman_valid(const char *str) {
   }
   
   return 1;
+}
+
+void roman_simplify(char *str) {
+  char *i, *find, *replace, *rest;
+  
+  find = "IIII";
+  replace = "IV";
+
+  i = strstr(str, find);
+  
+  if (i != NULL) {
+    rest = i + strlen(find);
+    strcpy(i, replace);
+    strcpy(i + strlen(replace), rest);
+  }
 }
 
 char *roman_add(char *first, char *second) {
@@ -38,5 +53,8 @@ char *roman_add(char *first, char *second) {
   strcat(buf, second);
 
   qsort(buf, strlen(buf), sizeof(char), roman_compare);
+  
+  roman_simplify(buf);
+
   return buf;
 }

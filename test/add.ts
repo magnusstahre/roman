@@ -49,3 +49,19 @@ char *res;
 res = roman_add("bad", "stuff");
 
 ck_assert_ptr_eq(res, NULL);
+
+#test add_vi_lx_gives_lxvi
+
+char *res;
+
+res = roman_add("VI", "LX");
+
+ck_assert_str_eq(res, "LXVI");
+
+#test add_ii_ii_gives_iv
+
+char *res;
+
+res = roman_add("II", "II");
+
+ck_assert_str_eq(res, "IV");
