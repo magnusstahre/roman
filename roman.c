@@ -26,6 +26,7 @@ char *roman_simplifications[] = {
   "IIII", "IV",
   "VV", "X",
   "VIV", "IX",
+  "XXXXX", "L",
   NULL, NULL
 };
 
@@ -48,6 +49,7 @@ void roman_simplify(char *str) {
 }
 
 char *roman_expansions[] = {
+  "IX", "VIV",
   "IV", "IIII",
   NULL, NULL
 };

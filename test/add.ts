@@ -97,3 +97,19 @@ char *res;
 res = roman_add("IV", "V");
 
 ck_assert_str_eq(res, "IX");
+
+#test add_i_ix_gives_x
+
+char *res;
+
+res = roman_add("I", "IX");
+
+ck_assert_str_eq(res, "X");
+
+#test add_xx_xxx_gives_l
+
+char *res;
+
+res = roman_add("XX", "XXX");
+
+ck_assert_str_eq(res, "L");
