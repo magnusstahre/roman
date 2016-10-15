@@ -92,19 +92,22 @@ static void roman_expand(char *str) {
 }
 
 char *roman_add(const char *first, const char *second) {
+  size_t len;
+  char *buf;
+
   if (!(roman_valid(first) && roman_valid(second))) {
     return NULL;
   }
 
-  size_t lens = strlen(first) + strlen(second);
+  len = strlen(first) + strlen(second);
   
-  char *buf = malloc(lens * 3);
+  buf = malloc(len * 3);
   
   strcpy(buf, first);
   roman_expand(buf);
-  size_t len2 = strlen(buf);
-  strcpy(buf+len2, second);
-  roman_expand(buf+len2);
+  len = strlen(buf);
+  strcpy(buf+len, second);
+  roman_expand(buf+len);
 
   qsort(buf, strlen(buf), sizeof(char), roman_compare);
   
