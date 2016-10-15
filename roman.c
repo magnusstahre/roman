@@ -174,7 +174,7 @@ char *roman_subtract(const char *first, const char *second) {
   strcpy(second_buf, second);
   roman_expand(second_buf);
   
-  while (*second_buf) {
+  while (*second_buf != '\0') {
     char *found_in_first_buf = strrchr(first_buf, *second_buf);
     
     if (found_in_first_buf == NULL) {
