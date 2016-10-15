@@ -15,3 +15,9 @@ ck_assert_str_eq(res, "II");
 res = roman_subtract("I", "II");
 
 ck_assert_ptr_eq(res, NULL);
+
+#test subtract_i_i_gives_null
+
+res = roman_subtract("I", "I");
+
+ck_assert_ptr_eq(res, NULL);

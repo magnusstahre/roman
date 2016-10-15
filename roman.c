@@ -131,7 +131,7 @@ char *roman_subtract(char *first, char *second) {
     }
   }
   
-  if (strlen(to_remove) == 0) {
+  if (strlen(diff) > 0 && strlen(to_remove) == 0) {
     ret = strdup(diff);
   }
   free(diff);
