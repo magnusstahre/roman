@@ -122,7 +122,8 @@ char *roman_add(const char *first, const char *second) {
 }
 
 static void roman_delete_char(char *str) {
-  strcpy(str, str+1);
+  size_t len = strlen(str);
+  memmove(str, str+1, sizeof(char)*len);
 }
 
 static const char *roman_borrows[] = {
