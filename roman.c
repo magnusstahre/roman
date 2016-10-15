@@ -113,6 +113,30 @@ void roman_delete_char(char *str) {
   strcpy(str, str+1);
 }
 
+char *roman_borrows[] = {
+  "DD", // M
+  "CCCCC", // D
+  "LL", // C
+  "XXXXX", // L
+  "VV", // X
+  "IIIII", // V
+  NULL // I
+};
+
+int roman_borrow(char *str, char c) {
+  char *borrower;
+  for (borrower = index(roman_numeral, c) - 1; borrower >= roman_numeral; borrower--) {
+    int i = borrower - roman_numeral;
+    char *found_in_str = rindex(str, *borrower);
+    if (found_in_str != NULL) {
+      strcpy(found_in_str + strlen(roman_borrows[i]), found_in_str + 1);
+      strncpy(found_in_str, roman_borrows[i], strlen(roman_borrows[i]));
+      return 1;
+    }
+  }
+  return 0;
+}
+
 char *roman_subtract(char *first, char *second) {
   char *ret = NULL;
   char *diff = malloc(strlen(first) * 3);
@@ -128,7 +152,9 @@ char *roman_subtract(char *first, char *second) {
     char *found_in_diff = rindex(diff, *ptr);
     
     if (found_in_diff == NULL) {
-      ptr++;
+      if (!roman_borrow(diff, *ptr)) {
+	break;
+      }
     } else {
       roman_delete_char(found_in_diff);
       roman_delete_char(ptr);
