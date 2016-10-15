@@ -114,7 +114,7 @@ void roman_delete_char(char *str) {
 }
 
 char *roman_subtract(char *first, char *second) {
-  char *ret;
+  char *ret = NULL;
   char *diff = strdup(first);
   char *to_remove = strdup(second);
   
@@ -131,9 +131,10 @@ char *roman_subtract(char *first, char *second) {
     }
   }
   
-  ret = strdup(diff);
+  if (strlen(to_remove) == 0) {
+    ret = strdup(diff);
+  }
   free(diff);
   free(to_remove);
   return ret;
 }
-

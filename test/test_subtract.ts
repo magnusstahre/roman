@@ -9,3 +9,9 @@ ck_assert_str_eq(res, "I");
 res = roman_subtract("III", "I");
 
 ck_assert_str_eq(res, "II");
+
+#test subtract_i_ii_gives_null
+
+res = roman_subtract("I", "II");
+
+ck_assert_ptr_eq(res, NULL);
