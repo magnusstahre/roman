@@ -10,13 +10,14 @@ static int roman_compare(const void *left, const void *right) {
 }; 
 
 static int roman_valid(const char *str) {
+  size_t len, x;
   if (str == NULL || strlen(str) == 0) {
     return 0;
   }
 
-  int l = strlen(str), x;
+  len = strlen(str);
   
-  for (x = 0; x < l; x++) {
+  for (x = 0; x < len; x++) {
     if (strchr(roman_numeral, str[x]) == NULL) {
       return 0;
     }
