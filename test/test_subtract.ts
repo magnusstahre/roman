@@ -21,3 +21,9 @@ ck_assert_ptr_eq(res, NULL);
 res = roman_subtract("I", "I");
 
 ck_assert_ptr_eq(res, NULL);
+
+#test subtract_iv_i_gives_iii
+
+res = roman_subtract("IV", "I");
+
+ck_assert_str_eq(res, "III");

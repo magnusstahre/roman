@@ -115,8 +115,12 @@ void roman_delete_char(char *str) {
 
 char *roman_subtract(char *first, char *second) {
   char *ret = NULL;
-  char *diff = strdup(first);
-  char *to_remove = strdup(second);
+  char *diff = malloc(strlen(first) * 3);
+  strcpy(diff, first);
+  roman_expand(diff);
+  char *to_remove = malloc(strlen(second) * 3);
+  strcpy(to_remove, second);
+  roman_expand(to_remove);
   
   char *ptr = to_remove;
   
