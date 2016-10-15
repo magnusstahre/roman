@@ -150,50 +150,48 @@ static int roman_borrow(char *str, char c) {
 }
 
 char *roman_subtract(const char *first, const char *second) {
+  char *ret = NULL, *first_buf, *second_buf;
   if (!(roman_valid(first) && roman_valid(second))) {
     return NULL;
   }
 
-  char *ret = NULL;
-  char *diff = malloc(strlen(first) * 20);
+  first_buf = malloc(strlen(first) * 20);
   
-  if (diff == NULL) {
+  if (first_buf == NULL) {
     return NULL;
   }
 
-  strcpy(diff, first);
-  roman_expand(diff);
+  strcpy(first_buf, first);
+  roman_expand(first_buf);
 
-  char *to_remove = malloc(strlen(second) * 3);
+  second_buf = malloc(strlen(second) * 3);
   
-  if (to_remove == NULL) {
-    free(diff);
+  if (second_buf == NULL) {
+    free(first_buf);
     return NULL;
   }
 
-  strcpy(to_remove, second);
-  roman_expand(to_remove);
+  strcpy(second_buf, second);
+  roman_expand(second_buf);
   
-  char *ptr = to_remove;
-  
-  while (*ptr) {
-    char *found_in_diff = strrchr(diff, *ptr);
+  while (*second_buf) {
+    char *found_in_first_buf = strrchr(first_buf, *second_buf);
     
-    if (found_in_diff == NULL) {
-      if (!roman_borrow(diff, *ptr)) {
+    if (found_in_first_buf == NULL) {
+      if (!roman_borrow(first_buf, *second_buf)) {
 	break;
       }
     } else {
-      roman_delete_char(found_in_diff);
-      roman_delete_char(ptr);
+      roman_delete_char(found_in_first_buf);
+      roman_delete_char(second_buf);
     }
   }
   
-  if (strlen(diff) > 0 && strlen(to_remove) == 0) {
-    roman_simplify(diff);
-    ret = strdup(diff);
+  if (strlen(first_buf) > 0 && strlen(second_buf) == 0) {
+    roman_simplify(first_buf);
+    ret = strdup(first_buf);
   }
-  free(diff);
-  free(to_remove);
+  free(first_buf);
+  free(second_buf);
   return ret;
 }
