@@ -105,6 +105,11 @@ char *roman_add(char *first, char *second) {
   qsort(buf, strlen(buf), sizeof(char), roman_compare);
   
   roman_simplify(buf);
+  
+  if (strncmp(buf, "MMMM", 4) == 0) {
+    free(buf);
+    return NULL;
+  }
 
   return buf;
 }

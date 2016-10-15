@@ -153,3 +153,9 @@ ck_assert_str_eq(res, "CM");
 res = roman_add("I", "CM");
 
 ck_assert_str_eq(res, "CMI");
+
+#test add_mm_mm_gives_null_for_overflow
+
+res = roman_add("MM", "MM");
+
+ck_assert_ptr_eq(res, NULL);
