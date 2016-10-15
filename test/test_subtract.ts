@@ -33,3 +33,9 @@ ck_assert_str_eq(res, "III");
 res = roman_subtract("V", "II");
 
 ck_assert_str_eq(res, "III");
+
+#test subtract_v_i_gives_iv
+
+res = roman_subtract("V", "I");
+
+ck_assert_str_eq(res, "IV");
