@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -9,7 +10,7 @@ static int roman_compare(const void *left, const void *right) {
   return strchr(roman_numeral, *(char *)left) - strchr(roman_numeral, *(char *)right);
 }; 
 
-static int roman_valid(const char *str) {
+static bool roman_valid(const char *str) {
   size_t len, x;
   if (str == NULL || strlen(str) == 0) {
     return 0;
