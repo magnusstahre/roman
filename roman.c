@@ -142,7 +142,7 @@ static bool roman_borrow(char *str, char c) {
     int i = borrower - roman_numeral;
     char *found_in_str = strrchr(str, *borrower);
     if (found_in_str != NULL) {
-      strcpy(found_in_str + strlen(roman_borrows[i]), found_in_str + 1);
+      memmove(found_in_str + strlen(roman_borrows[i]), found_in_str + 1, sizeof(char)*strlen(found_in_str));
       strncpy(found_in_str, roman_borrows[i], strlen(roman_borrows[i]));
       return 1;
     }
