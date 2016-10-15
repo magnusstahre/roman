@@ -85,7 +85,7 @@ static void roman_expand(char *str) {
   
     if (i != NULL) {
       rest = i + strlen(find);
-      strcpy(i + strlen(replace), rest);
+      memmove(i + strlen(replace), rest, sizeof(char)*(strlen(rest)+1));
       strncpy(i, replace, strlen(replace));
     }
   }
