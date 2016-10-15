@@ -3,10 +3,10 @@
 
 #include "roman.h"
 
-char roman_numeral[] = "MDCLXVI";
+const char roman_numeral[] = "MDCLXVI";
 
-int roman_compare(const void *a, const void *b) {
-  return index(roman_numeral, *(char *)a) - index(roman_numeral, *(char *)b);
+int roman_compare(const void *left, const void *right) {
+  return index(roman_numeral, *(char *)left) - index(roman_numeral, *(char *)right);
 }; 
 
 int roman_valid(const char *str) {
@@ -25,7 +25,7 @@ int roman_valid(const char *str) {
   return 1;
 }
 
-char *roman_simplifications[] = {
+const char *roman_simplifications[] = {
   "IIIII", "V",
   "IIII", "IV",
   "VV", "X",
@@ -43,7 +43,8 @@ char *roman_simplifications[] = {
 
 void roman_simplify(char *str) {
   int x;
-  char *i, *find, *replace, *rest;
+  const char *find, *replace;
+  char *i, *rest;
  
   for (x = 0; roman_simplifications[x] != NULL; x += 2) {
     find = roman_simplifications[x];
@@ -59,7 +60,7 @@ void roman_simplify(char *str) {
   }
 }
 
-char *roman_expansions[] = {
+const char *roman_expansions[] = {
   "CM", "DCD",
   "CD", "CCCC",
   "XC", "LXL",
@@ -71,7 +72,8 @@ char *roman_expansions[] = {
 
 void roman_expand(char *str) {
   int x;
-  char *i, *find, *replace, *rest;
+  const char *find, *replace;
+  char *i, *rest;
  
   for (x = 0; roman_expansions[x] != NULL; x += 2) {
     find = roman_expansions[x];
@@ -87,7 +89,7 @@ void roman_expand(char *str) {
   }
 }
 
-char *roman_add(char *first, char *second) {
+char *roman_add(const char *first, const char *second) {
   if (!(roman_valid(first) && roman_valid(second))) {
     return NULL;
   }
@@ -118,7 +120,7 @@ void roman_delete_char(char *str) {
   strcpy(str, str+1);
 }
 
-char *roman_borrows[] = {
+const char *roman_borrows[] = {
   "DD", // M
   "CCCCC", // D
   "LL", // C
@@ -142,7 +144,7 @@ int roman_borrow(char *str, char c) {
   return 0;
 }
 
-char *roman_subtract(char *first, char *second) {
+char *roman_subtract(const char *first, const char *second) {
   if (!(roman_valid(first) && roman_valid(second))) {
     return NULL;
   }
