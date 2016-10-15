@@ -10,6 +10,10 @@ int roman_compare(const void *a, const void *b) {
 }; 
 
 int roman_valid(const char *str) {
+  if (str == NULL) {
+    return 0;
+  }
+
   int l = strlen(str), x;
   
   for (x = 0; x < l; x++) {
@@ -84,10 +88,6 @@ void roman_expand(char *str) {
 }
 
 char *roman_add(char *first, char *second) {
-  if (first == NULL || second == NULL) {
-    return NULL;
-  }
-
   if (!(roman_valid(first) && roman_valid(second))) {
     return NULL;
   }
@@ -138,6 +138,10 @@ int roman_borrow(char *str, char c) {
 }
 
 char *roman_subtract(char *first, char *second) {
+  if (!(roman_valid(first) && roman_valid(second))) {
+    return NULL;
+  }
+
   char *ret = NULL;
   char *diff = malloc(strlen(first) * 3);
   strcpy(diff, first);

@@ -39,3 +39,9 @@ ck_assert_str_eq(res, "III");
 res = roman_subtract("V", "I");
 
 ck_assert_str_eq(res, "IV");
+
+#test subtract_bad_stuff_gives_null
+
+res = roman_subtract("bad", "stuff");
+
+ck_assert_ptr_eq(res, NULL);
