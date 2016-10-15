@@ -4,7 +4,7 @@
 
 #include "roman.h"
 
-const char roman_numeral[] = "MDCLXVI";
+static const char roman_numeral[] = "MDCLXVI";
 
 static int roman_compare(const void *left, const void *right) {
   return strchr(roman_numeral, *(char *)left) - strchr(roman_numeral, *(char *)right);
@@ -27,7 +27,7 @@ static bool roman_valid(const char *str) {
   return 1;
 }
 
-const char *roman_simplifications[] = {
+static const char *roman_simplifications[] = {
   "IIIII", "V",
   "IIII", "IV",
   "VV", "X",
@@ -62,7 +62,7 @@ static void roman_simplify(char *str) {
   }
 }
 
-const char *roman_expansions[] = {
+static const char *roman_expansions[] = {
   "CM", "DCD",
   "CD", "CCCC",
   "XC", "LXL",
@@ -125,7 +125,7 @@ static void roman_delete_char(char *str) {
   strcpy(str, str+1);
 }
 
-const char *roman_borrows[] = {
+static const char *roman_borrows[] = {
   "DD", // M
   "CCCCC", // D
   "LL", // C
