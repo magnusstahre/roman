@@ -55,7 +55,7 @@ void roman_simplify(char *str) {
     if (i != NULL) {
       rest = i + strlen(find);
       strcpy(i, replace);
-      strcpy(i + strlen(replace), rest);
+      memmove(i + strlen(replace), rest, sizeof(char)*(strlen(rest)+1));
     }
   }
 }
@@ -150,7 +150,7 @@ char *roman_subtract(const char *first, const char *second) {
   }
 
   char *ret = NULL;
-  char *diff = malloc(strlen(first) * 3);
+  char *diff = malloc(strlen(first) * 20);
   
   if (diff == NULL) {
     return NULL;
