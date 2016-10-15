@@ -159,3 +159,9 @@ ck_assert_str_eq(res, "CMI");
 res = roman_add("MM", "MM");
 
 ck_assert_ptr_eq(res, NULL);
+
+#test add_empty_string_gives_null
+
+res = roman_add("", "");
+
+ck_assert_ptr_eq(res, NULL);

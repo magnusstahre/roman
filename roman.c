@@ -10,7 +10,7 @@ int roman_compare(const void *left, const void *right) {
 }; 
 
 int roman_valid(const char *str) {
-  if (str == NULL) {
+  if (str == NULL || strlen(str) == 0) {
     return 0;
   }
 
