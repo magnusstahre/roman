@@ -6,7 +6,7 @@
 const char roman_numeral[] = "MDCLXVI";
 
 int roman_compare(const void *left, const void *right) {
-  return index(roman_numeral, *(char *)left) - index(roman_numeral, *(char *)right);
+  return strchr(roman_numeral, *(char *)left) - strchr(roman_numeral, *(char *)right);
 }; 
 
 int roman_valid(const char *str) {
@@ -17,7 +17,7 @@ int roman_valid(const char *str) {
   int l = strlen(str), x;
   
   for (x = 0; x < l; x++) {
-    if (index(roman_numeral, str[x]) == NULL) {
+    if (strchr(roman_numeral, str[x]) == NULL) {
       return 0;
     }
   }
@@ -132,9 +132,9 @@ const char *roman_borrows[] = {
 
 int roman_borrow(char *str, char c) {
   char *borrower;
-  for (borrower = index(roman_numeral, c) - 1; borrower >= roman_numeral; borrower--) {
+  for (borrower = strchr(roman_numeral, c) - 1; borrower >= roman_numeral; borrower--) {
     int i = borrower - roman_numeral;
-    char *found_in_str = rindex(str, *borrower);
+    char *found_in_str = strrchr(str, *borrower);
     if (found_in_str != NULL) {
       strcpy(found_in_str + strlen(roman_borrows[i]), found_in_str + 1);
       strncpy(found_in_str, roman_borrows[i], strlen(roman_borrows[i]));
@@ -172,7 +172,7 @@ char *roman_subtract(const char *first, const char *second) {
   char *ptr = to_remove;
   
   while (*ptr) {
-    char *found_in_diff = rindex(diff, *ptr);
+    char *found_in_diff = strrchr(diff, *ptr);
     
     if (found_in_diff == NULL) {
       if (!roman_borrow(diff, *ptr)) {
