@@ -1,17 +1,3 @@
-#include <check.h>
-
-#include <stdlib.h>
-
-#include "roman.h"
-
-char *res;
-
-void free_res_if_needed() {
-  if (res != NULL) {
-    free(res);
-  }
-}
-
 #test add_i_i_gives_ii
 
 res = roman_add("I", "I");
@@ -167,8 +153,3 @@ ck_assert_str_eq(res, "CM");
 res = roman_add("I", "CM");
 
 ck_assert_str_eq(res, "CMI");
-
-#main-pre
-
-tcase_add_checked_fixture(tc1_1, NULL, free_res_if_needed);
-
