@@ -135,7 +135,7 @@ const char *roman_borrows[] = {
   NULL // I
 };
 
-static int roman_borrow(char *str, char c) {
+static bool roman_borrow(char *str, char c) {
   char *borrower;
   for (borrower = strchr(roman_numeral, c) - 1; borrower >= roman_numeral; borrower--) {
     int i = borrower - roman_numeral;
