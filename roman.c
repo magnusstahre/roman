@@ -109,6 +109,31 @@ char *roman_add(char *first, char *second) {
   return buf;
 }
 
-char *roman_subtract(char *first, char *second) {
-  return strdup("I");
+void roman_delete_char(char *str) {
+  strcpy(str, str+1);
 }
+
+char *roman_subtract(char *first, char *second) {
+  char *ret;
+  char *diff = strdup(first);
+  char *to_remove = strdup(second);
+  
+  char *ptr = to_remove;
+  
+  while (*ptr) {
+    char *found_in_diff = rindex(diff, *ptr);
+    
+    if (found_in_diff == NULL) {
+      ptr++;
+    } else {
+      roman_delete_char(found_in_diff);
+      roman_delete_char(ptr);
+    }
+  }
+  
+  ret = strdup(diff);
+  free(diff);
+  free(to_remove);
+  return ret;
+}
+
