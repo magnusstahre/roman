@@ -151,9 +151,21 @@ char *roman_subtract(const char *first, const char *second) {
 
   char *ret = NULL;
   char *diff = malloc(strlen(first) * 3);
+  
+  if (diff == NULL) {
+    return NULL;
+  }
+
   strcpy(diff, first);
   roman_expand(diff);
+
   char *to_remove = malloc(strlen(second) * 3);
+  
+  if (to_remove == NULL) {
+    free(diff);
+    return NULL;
+  }
+
   strcpy(to_remove, second);
   roman_expand(to_remove);
   
