@@ -5,11 +5,11 @@
 
 const char roman_numeral[] = "MDCLXVI";
 
-int roman_compare(const void *left, const void *right) {
+static int roman_compare(const void *left, const void *right) {
   return strchr(roman_numeral, *(char *)left) - strchr(roman_numeral, *(char *)right);
 }; 
 
-int roman_valid(const char *str) {
+static int roman_valid(const char *str) {
   if (str == NULL || strlen(str) == 0) {
     return 0;
   }
@@ -41,7 +41,7 @@ const char *roman_simplifications[] = {
   NULL, NULL
 };
 
-void roman_simplify(char *str) {
+static void roman_simplify(char *str) {
   int x;
   const char *find, *replace;
   char *i, *rest;
@@ -70,7 +70,7 @@ const char *roman_expansions[] = {
   NULL, NULL
 };
 
-void roman_expand(char *str) {
+static void roman_expand(char *str) {
   int x;
   const char *find, *replace;
   char *i, *rest;
@@ -116,7 +116,7 @@ char *roman_add(const char *first, const char *second) {
   return buf;
 }
 
-void roman_delete_char(char *str) {
+static void roman_delete_char(char *str) {
   strcpy(str, str+1);
 }
 
@@ -130,7 +130,7 @@ const char *roman_borrows[] = {
   NULL // I
 };
 
-int roman_borrow(char *str, char c) {
+static int roman_borrow(char *str, char c) {
   char *borrower;
   for (borrower = strchr(roman_numeral, c) - 1; borrower >= roman_numeral; borrower--) {
     int i = borrower - roman_numeral;
